@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Phishing Link Detection System</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+    margin: 0;
+    padding-top: 60px;   /* SAME as navbar height */
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+}
+
+    /* DROPDOWN MENU */
+.dropdown {
+    position: relative;
+}
+
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    min-width: 180px;
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+.dropdown-menu li a {
+    color: white;
+    padding: 10px 15px;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-menu li a:hover {
+    background: #4fc3f7;
+    color: #0f2027;
+}
+
+/* Show dropdown */
+.dropdown-menu.show {
+    display: block;
+}
+
+
+    /* NAVBAR */
+   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    background: #0b1316;   /* solid dark */
+    z-index: 9999;        /* stays on top */
+}
+
+
+    nav h1 {
+        color: #4fc3f7;
+        font-size: 22px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #4fc3f7;
+}
+
+
+    /* HERO SECTION */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 20px 60px;
+
+         background:
+        linear-gradient(
+            rgba(15, 32, 39, 0.85),
+            rgba(15, 32, 39, 0.85)
+        ),
+        url("phishing.png");
+
+    background-repeat: no-repeat;
+    background-size: contain;   /* IMPORTANT */
+    background-position: center center; /* FORCE CENTER */
+    }
+
+    .hero-content {
+        max-width: 900px;
+        animation: fadeUp 1.5s ease;
+    }
+
+    .hero h2 {
+        font-size: 48px;
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px #4fc3f7,
+                     0 0 20px #4fc3f7;
+    }
+
+    .hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #e0e0e0;
+    }
+
+    .hero button {
+        padding: 15px 35px;
+        border-radius: 30px;
+        border: none;
+        background: #4fc3f7;
+        color: #0f2027;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(79,195,247,0.7);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(79,195,247,1);
+    }
+
+    /* INFO SECTION */
+    .info {
+        background: #ffffff;
+        color: #333;
+        padding: 70px 30px;
+        text-align: center;
+    }
+
+    .info h3 {
+        font-size: 32px;
+        color: #1e88e5;
+        margin-bottom: 20px;
+    }
+
+    .info p {
+        max-width: 900px;
+        margin: auto;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* CARDS */
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .card {
+        background: #f4f6f9;
+        padding: 25px;
+        border-radius: 12px;
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card h4 {
+        color: #1e88e5;
+        margin-bottom: 10px;
+    }
+
+    
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero h2 {
+            font-size: 34px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
+</head>
+<script>
+function toggleDropdown() {
+    document.getElementById("resourcesMenu").classList.toggle("show");
+}
+
+// Close dropdown when clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('.dropdown a')) {
+        let dropdown = document.getElementById("resourcesMenu");
+        if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+        }
+    }
+}
+</script>
+
+
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>Click Safe </h1>
+    <ul>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="scan url.html">Scan URL</a></li>
+        
+        <li class="dropdown">
+    <a href="#" onclick="toggleDropdown()">Resources ▾</a>
+    <ul class="dropdown-menu" id="resourcesMenu">
+        <li><a href="resources.html">All Resources</a></li>
+        <li><a href="Phishing Detection.html">Phishing Detection</a></li>
+       <li><a href="Detection Reports.html">Detection Reports</a></li>
+        <li><a href="URL Safety Checker.html">URL Safety Checker</a></li>
+    </ul>
+</li>
+
+
+        
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h2>Phishing Link Detection System</h2>
+        <p>
+            Scan suspicious links instantly and protect yourself from phishing attacks,
+            online fraud, and data theft.
+        </p>
+        <button onclick="location.href='scan url.html'">
+            Scan a URL
+        </button>
+    </div>
+</section>
+
+<!-- INFO -->
+<section class="info">
+    <h3>Stay Safe from Phishing Attacks</h3>
+    <p>
+        Cybercriminals use deceptive links to steal sensitive information such as usernames,
+        passwords, and banking details. Our system analyzes URLs and warns users before any
+        harmful interaction takes place.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h4>🔍 Smart Link Analysis</h4>
+            <p>Detects phishing patterns and suspicious URLs.</p>
+        </div>
+        <div class="card">
+            <h4>⚡ Real-Time Detection</h4>
+            <p>Instant classification of links.</p>
+        </div>
+        <div class="card">
+            <h4>👥 User Friendly</h4>
+            <p>Simple and easy-to-use interface.</p>
+        </div>
+        <div class="card">
+            <h4>🛡️ Secure Browsing</h4>
+            <p>Protects users from scams and fraud.</p>
+        </div>
+    </div>
+</section>
+
+
+
+</body>
+</html> 

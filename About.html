@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>About Us</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        /* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #0b1316;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 9999;
+}
+
+.logo {
+    color: #4fc3f7;
+    font-size: 22px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.nav-links li a:hover {
+    color: #4fc3f7;
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: #111;
+    list-style: none;
+    min-width: 180px;
+    border-radius: 6px;
+    padding: 8px 0;
+}
+
+.dropdown-menu li a {
+    padding: 8px 16px;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background: #1a1a1a;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/* PUSH CONTENT DOWN */
+body {
+    padding-top: 60px;
+}
+
+
+
+        /* HEADER */
+        header {
+            background: linear-gradient(120deg, #1e88e5, #1565c0);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            animation: fadeDown 1.2s ease;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            animation: fadeUp 1.2s ease;
+        }
+
+        h2 {
+            color: #1e88e5;
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: #f9fbff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+        }
+        .card:active {
+        background-color: aqua;
+}
+
+
+        .card h3 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1e88e5;
+            color: white;
+            margin-top: 50px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<script>
+function toggleDropdown(e) {
+    e.preventDefault();
+    document.getElementById("resourcesMenu").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+    if (!event.target.closest(".dropdown")) {
+        let menu = document.getElementById("resourcesMenu");
+        if (menu) menu.classList.remove("show");
+    }
+}
+</script>
+
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h1 class="logo">Click Safe</h1>
+    <ul class="nav-links">
+        <li><a href="login.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="scan url.html">Scan URL</a></li>
+
+        <li class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">Resources ▾</a>
+            <ul class="dropdown-menu" id="resourcesMenu">
+                <li><a href="resources.html">All Resources</a></li>
+                <li><a href="Phishing Detection.html">Phishing Detection</a></li>
+               <li><a href="Detection Reports.html">Detection Reports</a></li>
+                <li><a href="URL Safety Checker.html">URL Safety Checker</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<header>
+    <h1>Link Detection System</h1>
+    <p>Protecting Users from Phishing and Malicious Websites</p>
+</header>
+
+<div class="container">
+
+    <h2>About Us</h2>
+    <p>
+        The Link Detection System is a security-focused web application developed to help users identify phishing and malicious links before accessing them.
+        Our system analyzes URLs using intelligent techniques to determine whether a website is safe or suspicious.
+    </p>
+
+    <h2>What We Do</h2>
+    <ul>
+        <li>Analyze user-provided URLs</li>
+        <li>Detect phishing and suspicious links</li>
+        <li>Display results as Safe or Suspicious</li>
+        <li>Improve awareness about online safety</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <p>
+        The user enters a website URL into the system. The system extracts important features from the link and processes them using detection algorithms. 
+        Based on the analysis, the system displays whether the link is safe or potentially harmful.
+    </p>
+
+    <h2>Our Vision</h2>
+    <p>
+        Our vision is to build a safer digital world where users can browse the internet
+        confidently without falling victim to phishing attacks or online fraud.
+    </p>
+
+    <h2>Our Mission</h2>
+    <p>
+       Our mission is to create a safer online environment by reducing the risk of phishing attacks and online fraud.
+       We aim to educate users and provide a simple yet effective solution for link verification.
+    </p>
+
+    <h2>Who Can Use This?</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>🎓 Students</h3>
+            <p>Learn about phishing attacks and browse safely.</p>
+        </div>
+        <div class="card">
+            <h3>🌐 Internet Users</h3>
+            <p>Check suspicious links before opening them.</p>
+        </div>
+        <div class="card">
+            <h3>🏢 Organizations</h3>
+            <p>Protect employees from malicious websites.</p>
+        </div>
+        <div class="card">
+            <h3>🛡️ Cybersecurity Learners</h3>
+            <p>Understand real-world phishing detection.</p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Link Detection System | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
+
